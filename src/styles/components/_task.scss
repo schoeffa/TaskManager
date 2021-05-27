@@ -10,12 +10,15 @@
   text-align: left;
   border-radius: .75rem;
 
+  &-active {
+    z-index:3;
+  }
+
   &-checkbox {
     display: none;
   }
 
   &-checkbox:checked ~ label {
-    z-index: 3;
     opacity: 0;
   }
 
@@ -39,11 +42,15 @@
     position: absolute;
     top: 0;
     left: 0;
+    transition: all 1s;
+    z-index: 0;
 
     &-open {
-      position: fixed;
       z-index: 2;
-      animation: open-card 1s;
+      width: 100vw;
+      height: 150vh;
+      left: -25%;
+      top: -10rem;
     }
 
     &-open &-background {
@@ -56,6 +63,7 @@
       height: 100%;
       opacity: 1;
       border-radius: .75rem;
+      transition: z-index 5s;
     }
 
     .minimize-card {
@@ -66,7 +74,7 @@
       right: -20rem;
       font-size: 5rem;
       cursor: pointer;
-      transition: all 1.5s ease-out;
+      transition: all 1s ease-out;
       z-index: -1;
     }
   }
@@ -87,7 +95,7 @@
     position: fixed;
     top: 0;
     left: -50rem;
-    transition: left 2s;
+    transition: all 1s ease-out;
     z-index: -1;
 
     &-title {
@@ -117,23 +125,5 @@
       top: 8rem;
       font-size: 4.5rem;
     }
-  }
-}
-
-@keyframes open-card {
-  0% {
-    height: 4rem;
-    width: 75%;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.5);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(4);
   }
 }
